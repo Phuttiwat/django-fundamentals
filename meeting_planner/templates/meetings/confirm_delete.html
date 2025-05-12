@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Meeting: {{ meeting.title }} {% endblock%}
+{% block content %}
+<h1>Delete {{ meting.title }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    <p>Are you sure?</p>
+    <button type="submit">Yes</button>
+  <a href="{% url 'detail' meeting.id%}">No, take me back</a>
+</form>
+{% endblock %}

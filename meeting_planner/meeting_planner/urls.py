@@ -16,11 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from website.views import welcome,about
-
+import django.contrib.auth.urls
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", welcome),
-    path("about",about)
+    path("", welcome, name="welcome"),
+    path("about",about),
+    path('meetings/',include("meetings.urls")),
+    path('auth/',include('django.contrib.auth.urls')),
 ]
